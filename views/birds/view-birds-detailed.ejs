@@ -3,12 +3,15 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Bird Details</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+  <%- include('../partials/header', {title: 'Bird Project'}); %>
   <body>
-    <h1>Bird Details</h1>
-    <p>Welcome to Bird Details</p>
+    <% include ../partials/navbar %>
+
+    <div class="container">
+      <h1>Bird Details!</h1>
+      <p>Welcome to the bird details page!</p>
+    </div>
+
+    <% include ../partials/scripts %>
   </body>
 </html>

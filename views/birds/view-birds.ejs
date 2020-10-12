@@ -2,12 +2,15 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>View Birds</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+  <%- include('../partials/header', {title: 'Bird Project'}); %>
   <body>
-    <h1>View Birds</h1>
-    <p>Welcome to View Birds</p>
+    <% include ../partials/navbar %>
+
+    <div class="container">
+      <h1>View Birds!</h1>
+      <p>Welcome to the view birds page!</p>
+    </div>
+
+    <% include ../partials/scripts %>
   </body>
 </html>

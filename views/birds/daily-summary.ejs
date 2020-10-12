@@ -1,12 +1,15 @@
 <!--This page contains the information about each bird that is specific to the current day of the week (at time of access)--> 
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Daily Summary</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+  <%- include('../partials/header', {title: 'Bird Project'}); %>
   <body>
-    <h1>Daily Summary</h1>
-    <p>Welcome to Daily Summary</p>
+    <% include ../partials/navbar %>
+
+    <div class="container">
+      <h1>Daily Summary!</h1>
+      <p>Welcome to the daily summary page!</p>
+    </div>
+
+    <% include ../partials/scripts %>
   </body>
 </html>
