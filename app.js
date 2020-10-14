@@ -9,9 +9,11 @@ const usersRouter = require('./routes/users');
 const birdsRouter = require('./routes/birds');
 const settingsRouter = require('./routes/settings');
 
+var app = express();
+
 require('dotenv').config({path: __dirname + '/.env'});
 
-var app = express();
+mongoose.connect(process.env['CONNECTION'],{ useNewUrlParser: true, useUnifiedTopology: true });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
