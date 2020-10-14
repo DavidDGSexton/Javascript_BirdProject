@@ -11,9 +11,9 @@ const settingsRouter = require('./routes/settings');
 
 var app = express();
 
-require('dotenv').config({path: __dirname + '/.env'});
+// require('dotenv').config({path: __dirname + '/.env'});
 
-mongoose.connect(process.env['CONNECTION'],{ useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect(process.env['CONNECTION'],{ useNewUrlParser: true, useUnifiedTopology: true });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

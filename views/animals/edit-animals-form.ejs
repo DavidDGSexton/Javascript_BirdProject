@@ -1,13 +1,16 @@
 <!--This will be the form that the user will use to edit the entries of an existing animal or to delete an existing animal entirely--> 
 <!DOCTYPE html>
 <html>
-  <%- include('../partials/header', {title: 'animal Project'}); %>
+  <%- include('../partials/header', {title: 'Snimal Project'}); %>
   <body>
     <% include ../partials/navbar %>
 
     <div class="container">
-      <h1>Edit animals!</h1>
+      <h1>Edit Animals!</h1>
       <p>Welcome to the edit animals page!</p>
+      <button onclick="window.location.href='./view-animals-detailed';" class="btn btn-primary">
+        Submit
+      </button>
     </div>
 
     <% include ../partials/scripts %>

@@ -2,15 +2,28 @@
 
 <!DOCTYPE html>
 <html>
-  <%- include('../partials/header', {title: 'animal Project'}); %>
+  <%- include('../partials/header', {title: 'Animal Project'}); %>
   <body>
     <% include ../partials/navbar %>
 
     <div class="container">
-      <h1>View animals!</h1>
-      <p>Welcome to the view animals page!</p>
+      <h1>View All Animals!</h1>
+      <p>Welcome to the view all animals page!</p>
+      <button onclick="window.location.href='./new-animal-form';" class="btn btn-primary">
+        New Animal
+      </button>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h4>For Each Animal:</h4>
+      <button onclick="window.location.href='./edit-animals-form';" class="btn btn-primary">
+        Edit Animal
+      </button>
+      <button onclick="window.location.href='./view-animals-detailed';" class="btn btn-primary">
+        Animal Details
+      </button>
     </div>
-
     <% include ../partials/scripts %>
   </body>
 </html>

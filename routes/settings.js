@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-    res.render('../settings/index')
+    res.render('../views/settings/index')
 })
 
 // router.get('/', function(req, res, next) {
