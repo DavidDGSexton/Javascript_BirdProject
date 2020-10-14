@@ -9,6 +9,8 @@ const usersRouter = require('./routes/users');
 const birdsRouter = require('./routes/birds');
 const settingsRouter = require('./routes/settings');
 
+require('dotenv').config({path: __dirname + '/.env'});
+
 var app = express();
 
 // view engine setup
