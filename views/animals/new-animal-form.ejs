@@ -1,14 +1,14 @@
-<!--This will be the form that the user will use to add a new bird to the database-->
+<!--This will be the form that the user will use to add a new animal to the database-->
 <!DOCTYPE html>
 <html>
-  <%- include('../partials/header', {title: 'Bird Project'}); %>
+  <%- include('../partials/header', {title: 'animal Project'}); %>
   <body>
     <% include ../partials/navbar %>
 
     <div class="container">
-      <h1>New Bird!</h1>
+      <h1>New animal!</h1>
       <!--This is a form template from boostrap that I put in here by following along in class on 10/14/2020-->
-      <form method="POST" action="/birds/new-bird-form">
+      <form method="POST" action="/animals/new-animal-form">
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">

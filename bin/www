@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('expressbirdsnew:server');
+var debug = require('debug')('expressanimalsnew:server');
 var http = require('http');
 
 /**
