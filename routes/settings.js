@@ -1,22 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const settingsController = require('../controllers/settings-controller');
 
 
-router.get('/', function(req, res, next) {
-    res.render('../views/settings/index')
-})
+router.get('/', settingsController.get_animal_settings);
 
-// router.get('/', function(req, res, next) {
-//     res.render('../settings/index')
-// })
+router.get('/food-type', settingsController.get_animal_food_type);
 
-// router.get('/', function(req, res, next) {
-//     res.render('../settings/index')
-// })
+router.get('/animals', settingsController.get_animals);
 
-// router.get('/', function(req, res, next) {
-//     res.render('../settings/index')
-// })
+router.get('/meds', settingsController.get_meds);
 
 
 
