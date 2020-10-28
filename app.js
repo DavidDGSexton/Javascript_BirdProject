@@ -29,6 +29,22 @@ var session = require('express-session');
 require('./config/passport')(passport);
  
 app.use(cookieParser()); // read cookies (needed for auth)
+
+// required for passport
+app.use(session({
+    secret: 'devkey',
+    resave: true,
+    saveUninitialized: true,
+  }));
+  
+  app.use(passport.initialize());
+  app.use(passport.session()); 
+  app.use(flash()); 
+   
+  app.use(function (req, res, next) {
+    res.locals.user = req.user;
+    next();
+  });  
 //end content from jkuefler
 
 
