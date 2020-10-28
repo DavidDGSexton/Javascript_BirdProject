@@ -15,6 +15,27 @@ var app = express();
 
 // mongoose.connect(process.env['CONNECTION'],{ useNewUrlParser: true, useUnifiedTopology: true });
 
+//start content from jkuefler
+var passport = require('passport');
+var flash = require('connect-flash');
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({
+  extended: true,
+}));
+app.use(bodyParser.json());
+var session = require('express-session');
+
+require('./config/passport')(passport);
+ 
+app.use(cookieParser()); // read cookies (needed for auth)
+//end content from jkuefler
+
+
+
+
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
