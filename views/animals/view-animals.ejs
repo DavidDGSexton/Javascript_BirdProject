@@ -9,20 +9,27 @@
     <div class="container">
       <h1>View All Animals</h1>
       <p>Welcome to the view all animals page!</p>
-      <button onclick="window.location.href='./new-animal-form';" class="btn btn-primary">
+      <button onclick="window.location.href='./new-animal-form';" style="margin-top: 15px; margin-bottom: 30px" class="btn btn-primary">
         New Animal
       </button>
-      <br>
-      <br>
-      <br>
-      <br>
-      <h4>For Each Animal:</h4>
-      <button onclick="window.location.href='./edit-animals-form';" class="btn btn-primary">
-        Edit Animal
-      </button>
-      <button onclick="window.location.href='./view-animals-detailed';" class="btn btn-primary">
-        Animal Details
-      </button>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Nickname</th>
+            <th scope="col">Species</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i<data.length; i++) { %>
+            <tr>
+                <td><%= data[i].nickname %></td>
+                <td><%= data[i].species %></td>
+                <td><a href="/animals/update-animal?id=<%=data[i]._id%>">Update</a> 
+                    |<a href="/animals/delete-animal?id=<%=data[i]._id%>">Delete</a></td>
+            </tr>
+        <% } %>
+        </tbody>
+      </table>
     </div>
     <% include ../partials/scripts %>
   </body>

@@ -1,0 +1,95 @@
+<!--This will be the form that the user will use to add a new feeding to the database-->
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/header', {title: 'feeding Project'}); %>
+  <body>
+    <% include ../partials/navbar %>
+
+    <div class="container">
+      <h1>New feeding!</h1>
+      <!--This is a form template from boostrap that I put in here by following along in class on 10/14/2020-->
+      <form method="POST" action="./create-feeding" enctype="text/html">
+        <div class="form-group col-4">
+          <label for="animalId">Animal</label>
+          <select required class="form-control" name="animalId">
+            <option></option>
+            <% for(var i=0; i<animals.length; i++) { %>
+                <option value="<%=animals[i]._id%>">
+                    <%=animals[i].species%> - <%=animals[i].nickname%>
+                </option>
+            <% } %>
+        </select>
+        </div>
+        <div class="form-group col-4">
+          <label for="date">Date</label>
+          <input type="date" class="form-control" id="date" placeholder="Enter date" name="date">
+        </div>
+        <div class="form-group col-4">
+          <label for="medicineId">Medicine</label>
+          <select required class="form-control" name="medicineId">
+            <option></option>
+            <% for(var i=0; i<medicines.length; i++) { %>
+                <option value="<%=medicines[i]._id%>">
+                    <%=medicines[i].name%>
+                </option>
+            <% } %>
+        </select>
+        </div>
+        <div class="form-group col-4">
+          <label for="goalWeight">Goal Weight (oz)</label>
+          <input type="text" class="form-control" id="goalWeight" name="goalWeight" placeholder="Enter goal weight">
+        </div>
+        <div class="form-group col-4">
+          <label for="actualWeight">Actual Weight (oz)</label>
+          <input type="number" class="form-control" id="actualWeight" name="actualWeight" placeholder="Enter actual weight">
+        </div>
+        <div class="form-group col-4">
+          <label for="foodId">Food</label>
+          <select required class="form-control" name="foodId">
+            <option></option>
+            <% for(var i=0; i<foods.length; i++) { %>
+                <option value="<%=foods[i]._id%>">
+                    <%=foods[i].name%>
+                </option>
+            <% } %>
+        </select>
+        </div>
+        <div class="form-group col-4">
+          <label for="amountOfFoodFed">Amount of Food Fed (oz)</label>
+          <input type="number" class="form-control" id="amountOfFoodFed" name="amountOfFoodFed" placeholder="Enter food amount">
+        </div>
+        <div class="form-group col-4">
+          <label for="leftoverFood">Amount of Food Leftover (oz)</label>
+          <input type="number" class="form-control" id="leftoverFood" name="leftoverFood" placeholder="Enter leftover food">
+        </div>
+        <div class="form-group col-4">
+          <label for="keeperName">Keeper Name</label>
+          <input type="text" class="form-control" id="keeperName" name="keeperName" placeholder="Enter Keeper Name">
+        </div>
+        <div class="form-group col-4">
+          <label for="weatherConditions">Weather Conditions</label>
+          <select class="form-control" name="weatherConditions">
+              <option></option>
+              <option>Sunny - Cold</option>
+              <option>Cloudy - Cold</option>
+              <option>Precipitation - Cold</option>
+              <option>Sunny - Mild</option>
+              <option>Cloudy - Mild</option>
+              <option>Precipitation - Mild</option>
+              <option>Sunny - Hot</option>
+              <option>Cloudy - Hot</option>
+              <option>Precipitation - Hot</option>
+          </select>
+        </div>
+        <div class="form-group col-7">
+          <label for="comments">Comments</label>
+          <textarea style="height: 200px;" class="form-control" id="comments" name="comments"></textarea>
+        </div>
+        <button type="submit" value="Create" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+        <div style="margin: 400px;">
+      </form>
+      <!--End Boostrap Form-->
+    </div>
+    <% include ../partials/scripts %>
+  </body>
+</html>

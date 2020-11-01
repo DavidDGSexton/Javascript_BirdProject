@@ -1,15 +1,49 @@
-<!--This is the form used when adding a feeding--> 
 <!DOCTYPE html>
 <html>
-  <%- include('../partials/header', {title: 'Animal Project'}); %>
+  <%- include('../partials/header', {title: 'Feeding Project'}); %>
   <body>
     <% include ../partials/navbar %>
 
     <div class="container">
-      <h1>View Feedings</h1>
-      <p>Welcome to the feedings view!</p>
+      <h1>View All Feedings</h1>
+      <button onclick="window.location.href='/feedings/new-feeding-form';" style="margin-top: 15px; margin-bottom: 30px;" class="btn btn-primary">
+        New Feeding
+      </button>
+      <table class="table table-bordered table-striped table-responsive" id="feedingTable">
+        <thead>
+            <tr>      
+                <td>Animal</td>
+                <td>Medicine</td>
+                <td>Date</td>
+                <td>Goal Weight</td>
+                <td>Actual Weight</td>
+                <td>Food</td>
+                <td>Amount Fed</td>
+                <td>Leftover</td>
+                <td>Keeper</td>
+                <td>Weather Conditions</td>
+                <td>Comments</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <% for(var i=0; i<data.length; i++) { %>
+            <tr>
+                <td><%= data[i].animalNickname %> (<%= data[i].animalSpecies %>)</td>
+                <td><%= data[i].medicine %></td>
+                <td><%= data[i].dateTime.toLocaleDateString("en-US") %></td>
+                <td><%= data[i].goalWeightOfAnimal %>g</td>
+                <td><%= data[i].actualWeightOfAnimal %>g</td>
+                <td><%= data[i].food %></td>
+                <td><%= data[i].amountOfFeedingFed %>g</td>
+                <td><%= data[i].leftoverFood %>g</td>                
+                <td><%= data[i].keeperName %></td>
+                <td><%= data[i].weatherConditions %></td>
+                <td><%= data[i].comments %></td>
+                <td><a href="/feedings/delete-feeding?id=<%=data[i]._id%>">Delete</a></td>
+            </tr>
+        <% } %>
+    </table>
     </div>
-
     <% include ../partials/scripts %>
   </body>
 </html>

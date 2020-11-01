@@ -1,0 +1,23 @@
+<!--This is a confirmation page for deletion--> 
+
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/header', {title: 'Animal Project'}); %>
+  <body>
+    <% include ../partials/navbar %>
+
+    <div class="container">
+      <h1>Delete</h1>
+      <p>The following animal will be deleted. Are you sure?</p>
+      <p>Nickname: <%=data.nickname%></p>
+      <p>Species: <%=data.species%></p>
+      <form method="POST" action="./delete-animal" enctype="text/html">
+        <input type="hidden" name="id" value="<%=data._id%>" />
+      <button class="btn btn-primary">
+        Delete
+      </button>
+      </form>
+    </div>
+    <% include ../partials/scripts %>
+  </body>
+</html>

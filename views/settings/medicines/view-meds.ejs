@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../../partials/header', {title: 'Medicine Project'}); %>
+  <body>
+    <% include ../../partials/navbar %>
+
+    <div class="container">
+      <h1>View All Medicines</h1>
+      <button onclick="window.location.href='./new-medicine-form';" style="margin-top: 15px; margin-bottom: 30px" class="btn btn-primary">
+        New Medicine
+      </button>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i<data.length; i++) { %>
+            <tr>
+                <td><%= data[i].name %></td>
+                <td><a href="/medicines/update-medicine?id=<%=data[i]._id%>">Update</a> 
+                    |<a href="/medicines/delete-medicine?id=<%=data[i]._id%>">Delete</a></td>
+            </tr>
+        <% } %>
+        </tbody>
+      </table>
+    </div>
+    <% include ../../partials/scripts %>
+  </body>
+</html>

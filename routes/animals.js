@@ -12,5 +12,14 @@ router.get('/view-animals-detailed', animalsController.get_view_animals_detailed
 
 router.get('/view-animals', animalsController.get_view_animals);
 
+router.post('/create-animal', animalsController.post_create_animal);
+
+router.post('/update-animal', animalsController.put_update_animal);
+
+router.get('/update-animal', animalsController.get_update_animal);
+
+router.get('/delete-animal', animalsController.get_delete_animal);
+
+router.post('/delete-animal', animalsController.delete_animal);
 
 module.exports = router;

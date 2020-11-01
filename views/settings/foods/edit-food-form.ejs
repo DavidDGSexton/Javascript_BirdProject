@@ -1,0 +1,23 @@
+<!--This will be the form that the user will use to edit the entries of an existing food or to delete an existing food entirely--> 
+<!DOCTYPE html>
+<html>
+  <%- include('../../partials/header', {title: 'Snimal Project'}); %>
+  <body>
+    <% include ../../partials/navbar %>
+
+    <div class="container">
+      <h1>Edit Animals</h1>
+      <p>Welcome to the foods edit page!</p>
+      <form method="POST" action="./update-food" enctype="text/html">
+        <input type="hidden" name="id" value="<%=data._id%>" />
+        <div class="form-group col-4">
+          <label for="foodName">Name</label>
+          <input type="text" class="form-control" id="foodName" name="name" placeholder="Enter Name" value="<%=data.name%>">
+        </div>
+        <button type="submit" value="POST" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+      </form>
+    </div>
+
+    <% include ../../partials/scripts %>
+  </body>
+</html>
