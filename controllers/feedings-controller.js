@@ -67,7 +67,7 @@ exports.put_update_feeding = function (req, res) {
         medicine: req.body.medicine,
         goalWeightOfAnimal: req.body.goalWeight,
         actualWeightOfAnimal: req.body.actualWeight,
-        amountOfFoodFed: req.body.amoundOfFoodFed,
+        amountOfFoodFed: req.body.amountOfFoodFed,
         leftoverFood: req.body.leftoverFood,
         comments: req.body.comments,
         weatherConditions: req.body.weatherConditions,

@@ -7,16 +7,17 @@
     <% include ../partials/navbar %>
 
     <div class="container">
-      <h1>View All Animals</h1>
-      <p>Welcome to the view all animals page!</p>
+      <h1>Animals</h1>
       <button onclick="window.location.href='./new-animal-form';" style="margin-top: 15px; margin-bottom: 30px" class="btn btn-primary">
         New Animal
       </button>
-      <table class="table table-striped">
+      <table class="table table-striped" id="animalTable">
         <thead>
           <tr>
             <th scope="col">Nickname</th>
             <th scope="col">Species</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -24,13 +25,25 @@
             <tr>
                 <td><%= data[i].nickname %></td>
                 <td><%= data[i].species %></td>
+                <td><%= data[i].enabled %></td>
                 <td><a href="/animals/update-animal?id=<%=data[i]._id%>">Update</a> 
-                    |<a href="/animals/delete-animal?id=<%=data[i]._id%>">Delete</a></td>
+                    | <a href="/animals/delete-animal?id=<%=data[i]._id%>">Delete</a></td>
             </tr>
         <% } %>
         </tbody>
       </table>
     </div>
     <% include ../partials/scripts %>
+
+
+    <script type="text/javascript">
+      $(document).ready( function () {
+          $('#animalTable').DataTable({  
+              responsive: true 
+          });
+      });
+     </script>
+
+
   </body>
 </html>

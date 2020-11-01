@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <%- include('../partials/header', {title: 'Feeding Project'}); %>
+  <%- include('../partials/header', {title: 'Feedings'}); %>
   <body>
     <% include ../partials/navbar %>
 
@@ -34,7 +34,7 @@
                 <td><%= data[i].goalWeightOfAnimal %>g</td>
                 <td><%= data[i].actualWeightOfAnimal %>g</td>
                 <td><%= data[i].food %></td>
-                <td><%= data[i].amountOfFeedingFed %>g</td>
+                <td><%= data[i].amountOfFoodFed %>g</td>
                 <td><%= data[i].leftoverFood %>g</td>                
                 <td><%= data[i].keeperName %></td>
                 <td><%= data[i].weatherConditions %></td>
@@ -44,6 +44,18 @@
         <% } %>
     </table>
     </div>
+
     <% include ../partials/scripts %>
+
+
+    <script type="text/javascript">
+      $(document).ready( function () {
+          $('#feedingTable').DataTable({  
+              responsive: true 
+          });
+      });
+     </script>
+
+
   </body>
 </html>

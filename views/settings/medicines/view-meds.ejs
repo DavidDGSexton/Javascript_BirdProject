@@ -5,14 +5,15 @@
     <% include ../../partials/navbar %>
 
     <div class="container">
-      <h1>View All Medicines</h1>
+      <h1>Medications</h1>
       <button onclick="window.location.href='./new-medicine-form';" style="margin-top: 15px; margin-bottom: 30px" class="btn btn-primary">
-        New Medicine
+        New Medication
       </button>
-      <table class="table table-striped">
+      <table class="table table-striped" id="medicationsTable">
         <thead>
           <tr>
             <th scope="col">Name</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -20,12 +21,22 @@
             <tr>
                 <td><%= data[i].name %></td>
                 <td><a href="/medicines/update-medicine?id=<%=data[i]._id%>">Update</a> 
-                    |<a href="/medicines/delete-medicine?id=<%=data[i]._id%>">Delete</a></td>
+                    | <a href="/medicines/delete-medicine?id=<%=data[i]._id%>">Delete</a></td>
             </tr>
         <% } %>
         </tbody>
       </table>
     </div>
     <% include ../../partials/scripts %>
+
+    <script type="text/javascript">
+      $(document).ready( function () {
+          $('#medicationsTable').DataTable({  
+              responsive: true 
+          });
+      });
+     </script>
+
+
   </body>
 </html>

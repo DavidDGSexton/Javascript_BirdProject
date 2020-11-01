@@ -5,14 +5,15 @@
     <% include ../../partials/navbar %>
 
     <div class="container">
-      <h1>View All Foods</h1>
+      <h1>Food Types</h1>
       <button onclick="window.location.href='./new-food-form';" style="margin-bottom: 30px;" class="btn btn-primary">
         New Food
       </button>
-      <table class="table table-striped">
+      <table class="table table-striped" id="foodTable">
         <thead>
           <tr>
             <th scope="col">Name</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -20,12 +21,24 @@
             <tr>
                 <td><%= data[i].name %></td>
                 <td><a href="/foods/update-food?id=<%=data[i]._id%>">Update</a> 
-                    |<a href="/foods/delete-food?id=<%=data[i]._id%>">Delete</a></td>
+                    | <a href="/foods/delete-food?id=<%=data[i]._id%>">Delete</a></td>
             </tr>
         <% } %>
         </tbody>
       </table>
     </div>
     <% include ../../partials/scripts %>
+
+    <script type="text/javascript">
+      $(document).ready( function () {
+          $('#foodTable').DataTable({  
+              responsive: true 
+          });
+      });
+     </script>
+
+
+
+
   </body>
 </html>

@@ -1,7 +1,7 @@
-<!--This will be the form that the user will use to edit the entries of an existing animal or to delete an existing animal entirely--> 
+<!--This will be the form that the user will use to edit the entries of an existing animal or to delete an existing animal entirely-->
 <!DOCTYPE html>
 <html>
-  <%- include('../partials/header', {title: 'Snimal Project'}); %>
+  <%- include('../partials/header', {title: 'Animal Project'}); %>
   <body>
     <% include ../partials/navbar %>
 
@@ -12,21 +12,53 @@
         <input type="hidden" name="id" value="<%=data._id%>" />
         <div class="form-group col-4">
           <label for="animalNickname">Nickname</label>
-          <input type="text" class="form-control" id="animalNickname" name="nickname" placeholder="Enter Nickname" value="<%=data.nickname%>">
+          <input
+            type="text"
+            class="form-control"
+            id="animalNickname"
+            name="nickname"
+            placeholder="Enter Nickname"
+            value="<%=data.nickname%>"
+          />
         </div>
         <div class="form-group col-4">
           <label for="animalSpecies">Species</label>
-          <input type="text" class="form-control" id="animalSpecies" name="species" placeholder="Enter Species" value="<%=data.species%>">
+          <input
+            type="text"
+            class="form-control"
+            id="animalSpecies"
+            name="species"
+            placeholder="Enter Species"
+            value="<%=data.species%>"
+          />
         </div>
-          <div class="form-group form-check">
-            <% if (data.enabled) {%>
-              <input type="checkbox" class="form-control" id="animalEnabled" name="enabled" checked>
-            <% } else { %>
-              <input type="checkbox" class="form-control" id="animalEnabled" name="enabled">
-            <% } %>
-            <label class="form-check-label" for="enabled">Enabled</label>
+        <div class="form-group form-check">
+          <% if (data.enabled) {%>
+          <input
+            type="checkbox"
+            class="form-control"
+            id="animalEnabled"
+            name="enabled"
+            checked
+          />
+          <% } else { %>
+          <input
+            type="checkbox"
+            class="form-control"
+            id="animalEnabled"
+            name="enabled"
+          />
+          <% } %>
+          <label class="form-check-label" for="enabled">Enabled</label>
         </div>
-        <button type="submit" value="POST" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+        <button
+          type="submit"
+          value="POST"
+          class="btn btn-primary"
+          style="margin-top: 10px"
+        >
+          Submit
+        </button>
       </form>
     </div>
 
