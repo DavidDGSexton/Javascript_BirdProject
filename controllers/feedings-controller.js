@@ -25,7 +25,7 @@ exports.post_create_feeding = async function (req, res) {
         medicine: medicine.name,
         goalWeightOfAnimal: req.body.goalWeight,
         actualWeightOfAnimal: req.body.actualWeight,
-        amountOfFoodFed: req.body.amoundOfFoodFed,
+        amountOfFoodFed: req.body.amountOfFoodFed,
         leftoverFood: req.body.leftoverFood,
         comments: req.body.comments,
         weatherConditions: req.body.weatherConditions,
