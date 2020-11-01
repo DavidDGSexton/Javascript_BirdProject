@@ -3,18 +3,21 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const mongoose = require('mongoose');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const animalsRouter = require('./routes/animals');
 const settingsRouter = require('./routes/settings');
 const feedingsRouter = require('./routes/feedings');
+const foodsRouter = require('./routes/foods');
+const medicinesRouter = require('./routes/medicines');
 
 var app = express();
 
-// require('dotenv').config({path: __dirname + '/.env'});
+ require('dotenv').config({path: __dirname + '/.env'});
 
-// mongoose.connect(process.env['CONNECTION'],{ useNewUrlParser: true, useUnifiedTopology: true });
+ mongoose.connect(process.env['DATABASE'],{ useNewUrlParser: true, useUnifiedTopology: true });
 
 //start content from jkuefler
 var passport = require('passport');
@@ -68,7 +71,8 @@ app.use('/users', usersRouter);
 app.use('/animals', animalsRouter);
 app.use('/settings', settingsRouter);
 app.use('/feedings', feedingsRouter);
-
+app.use('/foods', foodsRouter);
+app.use('/medicines', medicinesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

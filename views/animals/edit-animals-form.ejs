@@ -7,10 +7,27 @@
 
     <div class="container">
       <h1>Edit Animals</h1>
-      <p>Welcome to the edit animals page!</p>
-      <button onclick="window.location.href='./view-animals-detailed';" class="btn btn-primary">
-        Submit
-      </button>
+      <p>Welcome to the animals edit page!</p>
+      <form method="POST" action="./update-animal" enctype="text/html">
+        <input type="hidden" name="id" value="<%=data._id%>" />
+        <div class="form-group col-4">
+          <label for="animalNickname">Nickname</label>
+          <input type="text" class="form-control" id="animalNickname" name="nickname" placeholder="Enter Nickname" value="<%=data.nickname%>">
+        </div>
+        <div class="form-group col-4">
+          <label for="animalSpecies">Species</label>
+          <input type="text" class="form-control" id="animalSpecies" name="species" placeholder="Enter Species" value="<%=data.species%>">
+        </div>
+          <div class="form-group form-check">
+            <% if (data.enabled) {%>
+              <input type="checkbox" class="form-control" id="animalEnabled" name="enabled" checked>
+            <% } else { %>
+              <input type="checkbox" class="form-control" id="animalEnabled" name="enabled">
+            <% } %>
+            <label class="form-check-label" for="enabled">Enabled</label>
+        </div>
+        <button type="submit" value="POST" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+      </form>
     </div>
 
     <% include ../partials/scripts %>

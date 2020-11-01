@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../../partials/header', {title: 'Food Project'}); %>
+  <body>
+    <% include ../../partials/navbar %>
+
+    <div class="container">
+      <h1>View All Foods</h1>
+      <button onclick="window.location.href='./new-food-form';" style="margin-bottom: 30px;" class="btn btn-primary">
+        New Food
+      </button>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i<data.length; i++) { %>
+            <tr>
+                <td><%= data[i].name %></td>
+                <td><a href="/foods/update-food?id=<%=data[i]._id%>">Update</a> 
+                    |<a href="/foods/delete-food?id=<%=data[i]._id%>">Delete</a></td>
+            </tr>
+        <% } %>
+        </tbody>
+      </table>
+    </div>
+    <% include ../../partials/scripts %>
+  </body>
+</html>
