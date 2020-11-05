@@ -1,7 +1,7 @@
 const Medicine = require('../models/medicine');
 
 exports.get_new_medicine_form = function (req, res) {
-    res.render('settings/medicines/new-med-form')
+    res.render('medicines/new-med-form')
 }
 
 exports.post_create_medicine = function (req, res) {
@@ -13,7 +13,7 @@ exports.post_create_medicine = function (req, res) {
         if (err) {
             console.error(err);
         } else {
-            res.redirect('../medicines/view-medicines');
+            res.redirect('./view-medicines');
         }
     });
 };
@@ -24,7 +24,7 @@ exports.get_update_medicine = function (req, res) {
             // handle error
         } else {
             console.log(medicine);
-            res.render('settings/medicines/edit-med-form', { data: medicine });
+            res.render('/medicines/edit-med-form', { data: medicine });
         }
     });
 };
@@ -45,7 +45,7 @@ exports.put_update_medicine = function (req, res) {
             // handle error
             console.log(err);
         } else {
-            res.redirect('../medicines/view-medicines');
+            res.redirect('/medicines/view-medicines');
         }
     });
 };
@@ -56,14 +56,14 @@ exports.get_delete_medicine = function (req, res) {
             // handle error
         } else {
             console.log(medicine);
-            res.render('settings/medicines/delete-med', { data: medicine });
+            res.render('/medicines/delete-med', { data: medicine });
         }
     });
 };
 
 exports.delete_medicine = async function (req, res) {
     await Medicine.findOneAndDelete({ _id: req.body.id });
-    res.redirect('../medicines/view-medicines');
+    res.redirect('/medicines/view-medicines');
 };
 
 exports.get_view_medicines = function (req, res) {
@@ -71,7 +71,7 @@ exports.get_view_medicines = function (req, res) {
         if (err) {
             // handle error
         } else {
-            res.render('settings/medicines/view-meds', { data: medicines });
+            res.render('medicines/view-meds', { data: medicines });
         }
     });
 }
