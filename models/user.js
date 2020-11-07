@@ -1,5 +1,3 @@
-//from jkuefler
-
 const mongoose = require("mongoose");
 const bcrypt   = require('bcrypt-nodejs');
 
@@ -26,9 +24,13 @@ const userSchema = new mongoose.Schema(
         registerDate: {
             type: Date,
             default: Date.now
-        }
+        },
+        role: {
+            type: String, 
+            required: true
+        },
     },
-    { strict: false }
+    {strict: false},
 );
 
 // generating a hash

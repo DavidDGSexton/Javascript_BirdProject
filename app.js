@@ -4,6 +4,10 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const passport = require('passport');
+const flash = require('connect-flash');
+const bodyParser = require('body-parser');
+const session = require('express-session');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -12,25 +16,19 @@ const settingsRouter = require('./routes/settings');
 const feedingsRouter = require('./routes/feedings');
 const foodsRouter = require('./routes/foods');
 const medicinesRouter = require('./routes/medicines');
+const accountRouter = require('./routes/accounts')
 
 var app = express();
+require('./config/passport')(passport);
 
  require('dotenv').config({path: __dirname + '/.env'});
 
  mongoose.connect(process.env['DATABASE'],{ useNewUrlParser: true, useUnifiedTopology: true });
 
-//start content from jkuefler
-var passport = require('passport');
-var flash = require('connect-flash');
-var bodyParser = require('body-parser');
-
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
 app.use(bodyParser.json());
-var session = require('express-session');
-
-require('./config/passport')(passport);
  
 app.use(cookieParser()); // read cookies (needed for auth)
 
@@ -49,12 +47,6 @@ app.use(session({
     res.locals.user = req.user;
     next();
   });  
-//end content from jkuefler
-
-
-
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -73,6 +65,7 @@ app.use('/settings', settingsRouter);
 app.use('/feedings', feedingsRouter);
 app.use('/foods', foodsRouter);
 app.use('/medicines', medicinesRouter);
+app.use('/account', accountRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
