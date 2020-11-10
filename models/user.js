@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema(
         },
         role: {
             type: String, 
-            required: true
+        //    required: true //if this line is not commented out, submitting the sign up form cuases everything to crash. don't know why, but i suspect there's an issue with communication between the front end and back end regarding this field- zach (11/10/2020)
         },
     },
     {strict: false},

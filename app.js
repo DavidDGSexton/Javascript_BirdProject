@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
-const flash = require('connect-flash');
+const flash = require('connect-flash'); //why is "flash" not blue? - Zach (11/9/20)
 const bodyParser = require('body-parser');
 const session = require('express-session');
 
@@ -21,18 +21,18 @@ const accountRouter = require('./routes/accounts')
 var app = express();
 require('./config/passport')(passport);
 
- require('dotenv').config({path: __dirname + '/.env'});
+require('dotenv').config({path: __dirname + '/.env'});
 
- mongoose.connect(process.env['DATABASE'],{ useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env['DATABASE'],{ useNewUrlParser: true, useUnifiedTopology: true });
 
+// for passport
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
 app.use(bodyParser.json());
  
-app.use(cookieParser()); // read cookies (needed for auth)
+app.use(cookieParser()); // read cookies
 
-// required for passport
 app.use(session({
     secret: 'devkey',
     resave: true,

@@ -1,5 +1,5 @@
-const LocalStrategy = require('passport-local').Strategy;
-const User = require('../models/user');
+var LocalStrategy = require('passport-local').Strategy;
+var User = require('../models/user');
 
 module.exports = function (passport) {
     //passport  serialize and unserialize users out of session
@@ -12,6 +12,49 @@ module.exports = function (passport) {
             done(err, user);
         });
     });
+
+    // ======================SIGNUP ===========================
+    passport.use('local-signup', new LocalStrategy({
+        // by default, local strategy uses username and password, we will override with email
+        usernameField: 'email',
+        passwordField: 'password',
+        passReqToCallback: true
+        // allows us to pass back the entire request to the callback
+    },
+        function (req, email, password, done) {
+            // User.findOne won't fire unless data is sent back
+            process.nextTick(function () {
+
+                // find a user whose email is the same as the forms email
+                User.findOne({ 'email': email }, function (err, user) {
+                    if (err)
+                        return done(err);
+
+                    if (user) {
+                        return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
+                    } else {
+
+                        // if there is no user with that email -create the user
+                        var newUser = new User();
+
+                        // set the user's local credentials
+                        newUser.email = email;
+                        newUser.password = newUser.generateHash(password);
+                        newUser.firstName = req.body.firstName;
+                        newUser.lastName = req.body.lastName;
+                        
+                        // save the user
+                        newUser.save(function (err) {
+                            if (err)
+                                throw err;
+                            return done(null, newUser);
+                        });
+                    }
+                });
+
+            });
+
+        }));
 
     // =================LOCAL LOGIN ======================================
 
