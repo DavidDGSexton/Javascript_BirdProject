@@ -1,0 +1,51 @@
+<!--This will be the users view that show an overview of the existing user database--> 
+
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/header', {title: 'Users'}); %>
+  <body>
+    <% include ../partials/navbar %>
+
+    <div class="container">
+      <h1>Users</h1>
+      <button onclick="window.location.href='./create';" style="margin-top: 15px; margin-bottom: 30px" class="btn btn-primary">
+        New User
+      </button>
+      <table class="table table-striped" id="userTable">
+        <thead>
+          <tr>
+            <th scope="col">Email</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Role</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i<data.length; i++) { %>
+            <tr>
+                <td><%= data[i].email %></td>
+                <td><%= data[i].firstName %></td>
+                <td><%= data[i].lastName %></td>
+                <td><%= data[i].role %></td>
+                <td><a href="/users/update?id=<%=data[i]._id%>">Update</a> 
+                    | <a href="/users/delete-user?id=<%=data[i]._id%>">Delete</a></td>
+            </tr>
+        <% } %>
+        </tbody>
+      </table>
+    </div>
+    <% include ../partials/scripts %>
+
+
+    <script type="text/javascript">
+      $(document).ready( function () {
+          $('#userTable').DataTable({  
+              responsive: true 
+          });
+      });
+     </script>
+
+
+  </body>
+</html>
