@@ -1,7 +1,7 @@
 const Food = require('../models/food');
 
 exports.get_new_food_form = function (req, res) {
-    res.render('settings/foods/new-food-form',)
+    res.render('foods/new-food-form',)
 }
 
 exports.post_create_food = function (req, res) {
@@ -13,7 +13,7 @@ exports.post_create_food = function (req, res) {
         if (err) {
             console.error(err);
         } else {
-            res.redirect('../foods/view-foods');
+            res.redirect('foods/view-foods');
         }
     });
 };
@@ -24,7 +24,7 @@ exports.get_update_food = function (req, res) {
             // handle error
         } else {
             console.log(food);
-            res.render('settings/foods/edit-food-form', { data: food });
+            res.render('foods/edit-food-form', { data: food });
         }
     });
 };
@@ -45,7 +45,7 @@ exports.put_update_food = function (req, res) {
             // handle error
             console.log(err);
         } else {
-            res.redirect('../foods/view-foods');
+            res.redirect('foods/view-foods');
         }
     });
 };
@@ -56,7 +56,7 @@ exports.get_delete_food = function (req, res) {
             // handle error
         } else {
             console.log(food);
-            res.render('settings/foods/delete-food', { data: food });
+            res.render('foods/delete-food', { data: food });
         }
     });
 };
@@ -67,7 +67,7 @@ exports.delete_food = function (req, res) {
             // handle error
             console.log(err);
         } else {
-            res.redirect('../foods/view-foods');
+            res.redirect('foods/view-foods');
         }
     });
 };
@@ -77,7 +77,7 @@ exports.get_view_foods = function (req, res) {
         if (err) {
             // handle error
         } else {
-            res.render('settings/foods/view-foods', { data: foods });
+            res.render('foods/view-foods', { data: foods });
         }
     });
 }
