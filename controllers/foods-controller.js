@@ -13,7 +13,7 @@ exports.post_create_food = function (req, res) {
         if (err) {
             console.error(err);
         } else {
-            res.redirect('foods/view-foods');
+            res.redirect('./view-foods');
         }
     });
 };
@@ -45,7 +45,7 @@ exports.put_update_food = function (req, res) {
             // handle error
             console.log(err);
         } else {
-            res.redirect('foods/view-foods');
+            res.redirect('./view-foods');
         }
     });
 };
@@ -67,7 +67,7 @@ exports.delete_food = function (req, res) {
             // handle error
             console.log(err);
         } else {
-            res.redirect('foods/view-foods');
+            res.redirect('./view-foods');
         }
     });
 };
