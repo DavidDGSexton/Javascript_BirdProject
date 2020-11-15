@@ -16,6 +16,7 @@ const feedingsRouter = require('./routes/feedings');
 const foodsRouter = require('./routes/foods');
 const medicinesRouter = require('./routes/medicines');
 const accountRouter = require('./routes/accounts')
+const settingsRouter = require('./routes/settings')
 
 var app = express();
 require('./config/passport')(passport);
@@ -64,6 +65,7 @@ app.use('/feedings', feedingsRouter);
 app.use('/foods', foodsRouter);
 app.use('/medicines', medicinesRouter);
 app.use('/account', accountRouter);
+app.use('/settings', settingsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
