@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<%- include('../partials/header', {title: 'User Project'}); %>
+
+<body>
+  <% include ../partials/navbar %>
+
+  <div class="container">
+    <h1>Create User</h1>
+    <form method="POST" action="./create-user" enctype="text/html">
+      <div class="form-group col-4">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="userEmail" name="email" placeholder="example@email.com"
+           required />
+      </div>
+      <div class="form-group col-4">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="userFirstName" name="firstName" placeholder="first Name"
+           required />
+      </div>
+      <div class="form-group col-4">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" id="userLastName" name="lastName" placeholder="last name"
+           required />
+      </div>
+      <div class="form-group col-4">
+        <label>Password</label>
+        <input required type="password" class="form-control" name="password">
+    </div>
+      <div class="form-group col-4">
+        <label for="role">Role</label>
+        <select required class="form-control" name="role">
+          <option value="Admin">Admin</option>
+          <option value="User">User</option>
+        </select>
+      </div>
+
+        <button form-group col-4 type="submit" value="POST" class="btn btn-primary" style=" margin-left: 20px;">
+          Create User
+        </button>
+      
+
+  </div>
+  </form>
+  </div>
+
+  <% include ../partials/scripts %>
+</body>
+
+</html>

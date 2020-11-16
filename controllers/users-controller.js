@@ -5,9 +5,19 @@ exports.get_new_user_form = function (req, res) {
 }
 
 exports.post_create_user = function (req, res) {
-    const newUser = new User({
-        name: req.body.name
-    });
+    // const newUser = new User({
+    //     name: req.body.name
+    // });
+
+    const newUser = new User();
+
+    
+  // set the user's local credentials
+  newUser.email = req.body.email;
+  newUser.password = newUser.generateHash(req.body.password);
+  newUser.firstName = req.body.firstName;
+  newUser.lastName = req.body.lastName;
+  newUser.role = req.body.role;
 
     newUser.save(function (err) {
         if (err) {
@@ -31,10 +41,10 @@ exports.get_update_user = function (req, res) {
 
 
 exports.put_update_user = function (req, res) {
-    let enabled = false;
-    if (req.body.enabled == 'on') {
-        enabled = true;
-    }
+    // let enabled = false;
+    // if (req.body.enabled == 'on') {
+    //     enabled = true;
+    // }
 
     const updateUser = {
         firstName: req.body.firstName,
@@ -42,6 +52,12 @@ exports.put_update_user = function (req, res) {
         email: req.body.email,
         role: req.body.role
     };
+
+    //updates a user's password if they had a password in the first place
+   const user = new User();
+   if (req.body.password) {
+    updateUser.password = user.generateHash(req.body.password);
+    }
 
     User.findOneAndUpdate({ _id: req.body.id }, updateUser, function (err, data) {
         if (err) {
