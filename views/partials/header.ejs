@@ -12,6 +12,7 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/r-2.2.6/datatables.min.css" />
 
   <!--https://www.geeksforgeeks.org/how-to-change-navigation-bar-color-in-bootstrap/-->
+  <!--https://stackoverflow.com/questions/23949804/how-to-change-link-color-bootstrap-->
   <style>
     .navbar-custom {
       background-color: rgb(115, 15, 18);
@@ -22,10 +23,40 @@
       outline-color: rgb(115, 15, 18);
     }
 
+    ul.navbar-nav li a,
+    ul.navbar-nav li a:visited {
+      color: rgb(0,0,0) !important;
+    }
+
+    ul.navbar-nav li a:hover,
+    ul.navbar-nav li a:active {
+      color: rgb(0,0,0) !important;
+    }
+
+    ul.navbar-nav li.active a {
+      color: rgb(0,0,0) !important;
+    }
+
+
     a,
     a:visited {
       color: rgb(115, 15, 18) !important;
     }
+
+    a:hover,
+    a:active {
+      color: rgb(115, 15, 18) !important;
+    }
+
+    .active a {
+      color: rgb(115, 15, 18) !important;
+    }
+
+    a,
+    a:visited {
+      color: rgb(115, 15, 18) !important;
+    }
+
     a:hover,
     a:active {
       color: rgb(115, 15, 18) !important;
