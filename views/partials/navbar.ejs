@@ -32,17 +32,19 @@
         <li class="nav-item">
           <a class="nav-link" href="/foods/view-foods">Foods</a>
         </li>
+        <% if (locals.user.role === "admin") { %>
         <li class="nav-item">
-          <a class="nav-link" href="/settings/">Settings</a>
+          <a class="nav-link" href="/settings">Settings</a>
         </li>
+        <% } %>
       </ul>
       <ul class="navbar-nav ml-auto">
         <% if (locals.user) { %>
-        <li class="nav-item mr-auto" style="float: right;">
-          <a class="nav-link" href="/account/logout" >Logout</a>
+        <li class="nav-item mr-auto" style="float: right">
+          <a class="nav-link" href="/account/logout">Logout</a>
         </li>
         <%} else { %>
-        <li class="nav-item mr-auto" style="float: right;">
+        <li class="nav-item mr-auto" style="float: right">
           <a class="nav-link" href="/account/login">Log in</a>
         </li>
         <% } %>
