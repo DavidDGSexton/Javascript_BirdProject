@@ -8,3 +8,5 @@
 • Animations (loading, etc) and touchups - ?
 • Persistant footer - ?
 • Set and verify admin permission (user needs to be admin only) - ?
+• Connect to Heroku - ?
+• Let user update their own password & allow admin to send user reset password prompt - ?
