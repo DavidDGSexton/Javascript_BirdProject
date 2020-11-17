@@ -48,8 +48,8 @@ exports.get_update_feeding = function (req, res) {
             // handle error
         } else {
             console.log(feeding);
-            res.render('feedings/feedings/edit-feeding-form', { data: feeding });
-        }
+            res.render('feedings/edit-feeding-form', { data: feeding });
+            }
     });
 };
 
