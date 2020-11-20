@@ -13,7 +13,11 @@ exports.get_new_feeding_form = async function (req, res) {
 }
 
 exports.get_export = async function(req, res) {
-    const feedings = await Feeding.find({});
+    const feedings = await Feeding.find({dateTime: {
+        $gte: req.query.initalDate,
+        $lt: req.query.endDate
+    },
+});
 
    const workbook = new excel.Workbook();
    const worksheet = workbook.addWorksheet('Feedings');
@@ -46,7 +50,9 @@ exports.get_export = async function(req, res) {
     );
     return workbook.xlsx.write(res).then(function() {
       res.status(200).end();
+      
     });
+    
 };
 
 exports.post_create_feeding = async function (req, res) {
@@ -153,4 +159,14 @@ exports.get_view_feedings = function (req, res) {
             res.render('feedings/view-feedings', { data: feedings });
         }
     });
+}
+
+    exports.get_export_feedings = function (req, res) {
+        Feeding.find({}, function (err, feedings) {
+            if (err) {
+                // handle error
+            } else {
+                res.render('feedings/export-feedings', { data: feedings });
+            }
+        });
 }

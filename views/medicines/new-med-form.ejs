@@ -1,4 +1,3 @@
-<!--This will be the form that the user will use to add a new medicine to the database-->
 <!DOCTYPE html>
 <html>
   <%- include('../partials/header', {title: 'medicine Project'}); %>
@@ -7,7 +6,6 @@
 
     <div class="container">
       <h1>New medication!</h1>
-      <!--This is a form template from boostrap that I put in here by following along in class on 10/14/2020-->
       <form
         method="POST"
         action="/medicines/create-medicine"
@@ -32,7 +30,6 @@
           Submit
         </button>
       </form>
-      <!--End Boostrap Form-->
     </div>
     <% include ../partials/scripts %>
   </body>

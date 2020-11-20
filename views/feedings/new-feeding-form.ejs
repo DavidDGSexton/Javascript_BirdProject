@@ -1,4 +1,4 @@
-<!--This will be the form that the user will use to add a new feeding to the database-->
+
 <!DOCTYPE html>
 <html>
   <%- include('../partials/header', {title: 'feeding Project'}); %>
@@ -7,7 +7,7 @@
 
     <div class="container">
       <h1>New feeding!</h1>
-      <!--This is a form template from boostrap that I put in here by following along in class on 10/14/2020-->
+     
       <form method="POST" action="./create-feeding" enctype="text/html">
         <div class="form-group col-4">
           <label for="animalId">Animal</label>
@@ -88,7 +88,7 @@
         <button type="submit" value="Create" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
         <div style="margin: 400px;">
       </form>
-      <!--End Boostrap Form-->
+      
     </div>
     <% include ../partials/scripts %>
   </body>

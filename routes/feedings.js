@@ -17,7 +17,9 @@ router.get('/delete-feeding', authMiddleware.ensureAuthenticated, feedingsContro
 
 router.post('/delete-feeding', authMiddleware.ensureAuthenticated, feedingsController.delete_feeding);
 
-router.get('/view-feedings/export', authMiddleware.ensureAuthenticated, feedingsController.get_export);
+router.get('/export-feedings/export', authMiddleware.ensureAuthenticated, feedingsController.get_export);
+
+router.get('/export-feedings', authMiddleware.ensureAuthenticated, feedingsController.get_export_feedings);
 
 
 module.exports = router;
