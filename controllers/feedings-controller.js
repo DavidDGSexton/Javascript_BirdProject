@@ -2,6 +2,7 @@ const Feeding = require('../models/feeding');
 const Animal = require('../models/animal');
 const Food = require('../models/food');
 const Medicine = require('../models/medicine');
+const excel = require('exceljs');
 
 exports.get_new_feeding_form = async function (req, res) {
     const animals = await Animal.find({enabled: true});
@@ -10,6 +11,49 @@ exports.get_new_feeding_form = async function (req, res) {
 
     res.render('feedings/new-feeding-form', {animals: animals, foods: foods, medicines: medicines})
 }
+
+exports.get_export = async function(req, res) {
+    const feedings = await Feeding.find({dateTime: {
+        $gte: req.query.initalDate,
+        $lt: req.query.endDate
+    },
+});
+
+   const workbook = new excel.Workbook();
+   const worksheet = workbook.addWorksheet('Feedings');
+
+   worksheet.columns = [
+    {header: 'Date', key: 'dateTime', width: 15},
+    {header: 'Species', key: 'animalSpecies', width: 20},
+    {header: 'Nickname', key: 'animalNickname', width: 20},
+    {header: 'Food', key: 'food', width: 16},
+    {header: 'Medicine', key: 'medicine', width: 20},
+    {header: 'Goal Weight', key: 'goalWeightOfAnimal', width: 15},
+    {header: 'Actual Weight', key: 'actualWeightOfAnimal', width: 15},
+    {header: 'Amount Fed', key: 'amountOfFoodFed', width: 15},
+    {header: 'Leftover Food', key: 'leftoverFood', width: 15},
+    {header: 'Weather Conditions', key: 'weatherConditions', width: 20},
+    {header: 'Comments', key: 'comments', width: 50},
+  ];
+
+  //set worksheet data
+  worksheet.addRows(feedings);
+
+  //generate response
+  res.setHeader(
+      'Content-Type',
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    );
+    res.setHeader(
+      'Content-Disposition',
+      'attachment; filename=' + 'feedings.xlsx',
+    );
+    return workbook.xlsx.write(res).then(function() {
+      res.status(200).end();
+      
+    });
+    
+};
 
 exports.post_create_feeding = async function (req, res) {
     console.log(req.body);
@@ -115,4 +159,14 @@ exports.get_view_feedings = function (req, res) {
             res.render('feedings/view-feedings', { data: feedings });
         }
     });
+}
+
+    exports.get_export_feedings = function (req, res) {
+        Feeding.find({}, function (err, feedings) {
+            if (err) {
+                // handle error
+            } else {
+                res.render('feedings/export-feedings', { data: feedings });
+            }
+        });
 }

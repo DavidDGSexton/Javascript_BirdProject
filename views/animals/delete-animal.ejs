@@ -1,5 +1,3 @@
-<!--This is a confirmation page for deletion--> 
-
 <!DOCTYPE html>
 <html>
   <%- include('../partials/header', {title: 'Animal Project'}); %>
@@ -13,9 +11,7 @@
       <p>Species: <%=data.species%></p>
       <form method="POST" action="./delete-animal" enctype="text/html">
         <input type="hidden" name="id" value="<%=data._id%>" />
-      <button class="btn btn-primary">
-        Delete
-      </button>
+        <button class="btn btn-primary">Delete</button>
       </form>
     </div>
     <% include ../partials/scripts %>
