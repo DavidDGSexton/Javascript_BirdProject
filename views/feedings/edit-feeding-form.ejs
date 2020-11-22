@@ -7,12 +7,14 @@
   <% include ../partials/navbar %>
 
   <div class="container">
-    <h1>Update Feeding</h1>
+    <h1>Edit Feeding</h1>
     <!--This is a form template from boostrap that I put in here by following along in class on 10/14/2020-->
     <form method="POST" action="./update-feeding" enctype="text/html">
+      <input type="hidden" name="id" value="<%=data._id%>"/>
+
       <div class="form-group col-4">
         <label for="animalId">Animal</label>
-        <select required class="form-control" name="animalId" value="<%=data.animalName%>">
+        <select required class="form-control" name="animalId" id="animalSpecies" value="<%=data.nickname%> - <%=data.species%>">
           <option></option>
           <% for(var i=0; i<animals.length; i++) { %>
           <option value="<%=animals[i]._id%>">
@@ -21,31 +23,36 @@
           <% } %>
         </select>
       </div>
+
       <div class="form-group col-4">
         <label for="date">Date</label>
-        <input type="date" class="form-control" id="date" placeholder="Enter date" name="date" value="<%=data.dateTime>">
+        <input type="date" class="form-control" id="date" placeholder="Enter date" name="date" value="<%=data.dateTime%>">
         </div>
+
         <div class="form-group col-4">
           <label for="medicineId">Medicine</label>
-          <select required class="form-control" name="medicineId" value="<%=data.medicine%>>
+          <select required class="form-control" id="medicine" name="medicineId" value="<%=data.medicine%>">
             <option></option>
             <% for(var i=0; i<medicines.length; i++) { %>
-                <option value=" <%=medicines[i]._id%>">
+                <option value="<%=medicines[i]._id%>">
         <%=medicines[i].name%>
         </option>
         <% } %>
         </select>
       </div>
+
       <div class="form-group col-4">
         <label for="goalWeight">Goal Weight (oz)</label>
         <input type="text" class="form-control" id="goalWeight" name="goalWeight" placeholder="Enter goal weight"
           value="<%=data.goalWeightOfAnimal%>">
       </div>
+
       <div class="form-group col-4">
         <label for="actualWeight">Actual Weight (oz)</label>
         <input type="number" class="form-control" id="actualWeight" name="actualWeight"
           placeholder="Enter actual weight" value="<%=data.actualWeightOfAnimal%>">
       </div>
+
       <div class="form-group col-4">
         <label for="foodId">Food</label>
         <select required class="form-control" name="foodId" value="<%=data.food%>"></select>>
@@ -57,6 +64,7 @@
         <% } %>
         </select>
       </div>
+
       <div class="form-group col-4">
         <label for="amountOfFoodFed">Amount of Food Fed (oz)</label>
         <input type="number" class="form-control" id="amountOfFoodFed" name="amountOfFoodFed"
@@ -75,7 +83,7 @@
         <label for="comments">Comments</label>
         <textarea style="height: 200px;" class="form-control" id="comments" name="comments" value="<%=data.comments%>"></textarea>
       </div>
-      <button type="submit" value="Create" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+      <button type="submit" value="POST" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
       <div style="margin: 400px;">
     </form>
   </div>

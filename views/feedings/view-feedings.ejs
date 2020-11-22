@@ -39,7 +39,7 @@
                 <td><%= data[i].keeperName %></td>
                 <td><%= data[i].weatherConditions %></td>
                 <td><%= data[i].comments %></td>
-                <td><a href="/feedings/delete-feeding?id=<%=data[i]._id%>">Delete </a><a href="/animals/update-feeding?id=<%=data[i]._id%>">Update</a></td> <!--need to find out how to use this with the reactive table to be different buttons-->
+                <td><a href="/feedings/update-feeding?id=<%=data[i]._id%>">Update</a> | <a href="/feedings/delete-feeding?id=<%=data[i]._id%>">Delete </a></td> <!--need to find out how to use this with the reactive table to be different buttons-->
             </tr>
         <% } %>
     </table>
@@ -51,7 +51,8 @@
     <script type="text/javascript">
       $(document).ready( function () {
           $('#feedingTable').DataTable({  
-              responsive: true 
+              responsive: true,
+              order: [[ 2,  "desc"]] 
           });
       });
      </script>

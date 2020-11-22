@@ -42,8 +42,15 @@ exports.post_create_feeding = async function (req, res) {
     });
 };
 
-exports.get_update_feeding = function (req, res) {
+exports.get_update_feeding = async function (req, res) {
+
+    const animals = await Animal.find({enabled: true});
+    const foods = await Food.find({});
+    const medicines = await Medicine.find({});
+
+
     Feeding.findOne({ _id: req.query.id }, function (err, feeding) {
+       
         if (err) {
             // handle error
         } else {
