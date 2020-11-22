@@ -48,14 +48,13 @@ exports.get_update_feeding = async function (req, res) {
     const foods = await Food.find({});
     const medicines = await Medicine.find({});
 
-
     Feeding.findOne({ _id: req.query.id }, function (err, feeding) {
        
         if (err) {
             // handle error
         } else {
             console.log(feeding);
-            res.render('feedings/edit-feeding-form', { data: feeding });
+            res.render('feedings/edit-feeding-form', { data: feeding, animals: animals, foods: foods, medicines: medicines });
             }
     });
 };
