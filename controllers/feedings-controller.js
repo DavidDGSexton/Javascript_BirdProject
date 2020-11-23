@@ -13,11 +13,12 @@ exports.get_new_feeding_form = async function (req, res) {
 }
 
 exports.get_export = async function(req, res) {
+
     const feedings = await Feeding.find({dateTime: {
-        $gte: req.query.initalDate,
-        $lt: req.query.endDate
+        $gte: new Date(new Date(req.query.initalDate).setHours(00, 00, 00)),
+        $lte: new Date(new Date(req.query.endDate).setHours(23, 59, 59)),
     },
-});
+}).sort({dateTime: 'desc'});
 
    const workbook = new excel.Workbook();
    const worksheet = workbook.addWorksheet('Feedings');
@@ -28,10 +29,10 @@ exports.get_export = async function(req, res) {
     {header: 'Nickname', key: 'animalNickname', width: 20},
     {header: 'Food', key: 'food', width: 16},
     {header: 'Medicine', key: 'medicine', width: 20},
-    {header: 'Goal Weight', key: 'goalWeightOfAnimal', width: 15},
-    {header: 'Actual Weight', key: 'actualWeightOfAnimal', width: 15},
-    {header: 'Amount Fed', key: 'amountOfFoodFed', width: 15},
-    {header: 'Leftover Food', key: 'leftoverFood', width: 15},
+    {header: 'Goal Weight (g)', key: 'goalWeightOfAnimal', width: 18},
+    {header: 'Actual Weight (g)', key: 'actualWeightOfAnimal', width: 18},
+    {header: 'Amount Fed (g)', key: 'amountOfFoodFed', width: 17},
+    {header: 'Leftover Food (g)', key: 'leftoverFood', width: 18},
     {header: 'Weather Conditions', key: 'weatherConditions', width: 20},
     {header: 'Comments', key: 'comments', width: 50},
   ];
