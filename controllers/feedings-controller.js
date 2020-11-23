@@ -74,7 +74,7 @@ exports.post_create_feeding = async function (req, res) {
         comments: req.body.comments,
         weatherConditions: req.body.weatherConditions,
         dateTime: req.body.dateTime,
-        keeperName: req.body.keeperName
+        keeperName: res.locals.user.firstName + ' ' + res.locals.user.lastName
     });
 
     newFeeding.save(function (err) {
