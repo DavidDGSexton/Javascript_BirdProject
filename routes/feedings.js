@@ -21,5 +21,9 @@ router.get('/export-feedings/export', authMiddleware.ensureAuthenticated, feedin
 
 router.get('/export-feedings', authMiddleware.ensureAuthenticated, feedingsController.get_export_feedings);
 
+router.get('/export', authMiddleware.ensureAuthenticated, feedingsController.get_all_export_feedings);
+
+
+
 
 module.exports = router;

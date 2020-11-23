@@ -170,4 +170,39 @@ exports.get_view_feedings = function (req, res) {
                 res.render('feedings/export-feedings', { data: feedings });
             }
         });
-}
+    }
+
+exports.get_all_export_feedings = async function(req, res) {
+            const feedings = await Feeding.find({}).sort({dateTime: 'desc'});
+          
+            const workbook = new excel.Workbook();
+            const worksheet = workbook.addWorksheet('Feedings');
+
+            worksheet.columns = [
+                {header: 'Date', key: 'dateTime', width: 15},
+                {header: 'Species', key: 'animalSpecies', width: 20},
+                {header: 'Nickname', key: 'animalNickname', width: 20},
+                {header: 'Food', key: 'food', width: 16},
+                {header: 'Medicine', key: 'medicine', width: 20},
+                {header: 'Goal Weight (g)', key: 'goalWeightOfAnimal', width: 18},
+                {header: 'Actual Weight (g)', key: 'actualWeightOfAnimal', width: 18},
+                {header: 'Amount Fed (g)', key: 'amountOfFoodFed', width: 17},
+                {header: 'Leftover Food (g)', key: 'leftoverFood', width: 18},
+                {header: 'Weather Conditions', key: 'weatherConditions', width: 20},
+                {header: 'Comments', key: 'comments', width: 50},
+              ];
+          
+            worksheet.addRows(feedings);
+          
+            res.setHeader(
+                'Content-Type',
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            );
+            res.setHeader(
+                'Content-Disposition',
+                'attachment; filename=' + 'feedings.xlsx',
+            );
+            return workbook.xlsx.write(res).then(function() {
+              res.status(200).end();
+            });
+          };
