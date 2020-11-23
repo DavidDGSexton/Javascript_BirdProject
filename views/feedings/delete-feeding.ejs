@@ -1,4 +1,4 @@
-<!--This is a confirmation page for deletion--> 
+<!--This is a confirmation page for deletion-->
 
 <!DOCTYPE html>
 <html>
@@ -12,12 +12,10 @@
       <p>Name: <%=data.animalNickname%></p>
       <p>Food: <%=data.food%></p>
       <p>Medicine: <%=data.medicine%></p>
-      <p>Date: <%=data.dateTime.toLocaleDateString("en-US")%></p>
+      <p>Date: <%=data.dateTime%></p>
       <form method="POST" action="./delete-feeding" enctype="text/html">
         <input type="hidden" name="id" value="<%=data._id%>" />
-      <button class="btn btn-primary">
-        Delete
-      </button>
+        <button class="btn btn-primary">Delete</button>
       </form>
     </div>
     <% include ../partials/scripts %>
