@@ -1,0 +1,4 @@
+Add the following lines to the body of 'error.ejs' page for detailed error messages to help debug (if you leave them in there commented out it breaks the page):
+
+<h1><%= message %></h1>
+<pre><%= error.stack %></pre>

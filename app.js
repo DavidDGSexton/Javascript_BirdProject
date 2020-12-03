@@ -67,9 +67,9 @@ app.use('/medicines', medicinesRouter);
 app.use('/account', accountRouter);
 app.use('/settings', settingsRouter);
 
-// catch 404 and forward to error handler
+// catch 404 and render not found page
 app.use(function(req, res, next) {
-  next(createError(404));
+  res.render('not-found');
 });
 
 // error handler

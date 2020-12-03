@@ -1,4 +1,4 @@
-
+<!--This will be the form that the user will use to add a new feeding to the database-->
 <!DOCTYPE html>
 <html>
   <%- include('../partials/header', {title: 'Animal Project'}); %>
@@ -6,13 +6,14 @@
     <% include ../partials/navbar %>
 
     <div class="container">
-      <h1>New Feeding</h1>
-      <form method="POST" action="./create-feeding" enctype="text/html">
+      <h1>Edit feeding</h1>
+      <form method="POST" action="./update-feeding" enctype="text/html">
+        <input type="hidden" name="id" value="<%=data._id%>" />
 
         <div class="form-group col-4">
           <label for="animalId">Animal</label>
           <select required class="form-control" name="animalId">
-            <option></option>
+            <option><%=data.animalSpecies%> - <%=data.animalNickname%></option>
             <% for(var i=0; i<animals.length; i++) { %>
                 <option value="<%=animals[i]._id%>">
                     <%=animals[i].species%> - <%=animals[i].nickname%>
@@ -23,13 +24,13 @@
 
         <div class="form-group col-4">
           <label for="date">Date</label>
-          <input type="date" class="form-control" id="date" placeholder="Enter date" name="date">
+          <input type="date" class="form-control" id="date" placeholder="Enter date" name="date" value="<%=data.dateTime%>">
         </div>
 
         <div class="form-group col-4">
           <label for="medicineId">Medicine</label>
           <select required class="form-control" name="medicineId">
-            <option></option>
+            <option><%=data.medicine%></option>
             <% for(var i=0; i<medicines.length; i++) { %>
                 <option value="<%=medicines[i]._id%>">
                     <%=medicines[i].name%>
@@ -39,18 +40,18 @@
         </div>
         
         <div class="form-group col-4">
-          <label for="goalWeight">Goal Weight (g)</label>
-          <input type="text" class="form-control" id="goalWeight" name="goalWeight" placeholder="Enter goal weight">
+          <label for="goalWeight">Goal Weight (oz)</label>
+          <input type="text" class="form-control" id="goalWeight" name="goalWeight" placeholder="Enter goal weight" value="<%=data.goalWeightOfAnimal%>">
         </div>
         <div class="form-group col-4">
-          <label for="actualWeight">Actual Weight (g)</label>
-          <input type="number" class="form-control" id="actualWeight" name="actualWeight" placeholder="Enter actual weight">
+          <label for="actualWeight">Actual Weight (oz)</label>
+          <input type="number" class="form-control" id="actualWeight" name="actualWeight" placeholder="Enter actual weight" value="<%=data.actualWeightOfAnimal%>">
         </div>
 
         <div class="form-group col-4">
           <label for="foodId">Food</label>
           <select required class="form-control" name="foodId">
-            <option></option>
+            <option><%=data.food%></option>
             <% for(var i=0; i<foods.length; i++) { %>
                 <option value="<%=foods[i]._id%>">
                     <%=foods[i].name%>
@@ -58,19 +59,19 @@
             <% } %>
         </select>
         </div>
-
+        
         <div class="form-group col-4">
-          <label for="amountOfFoodFed">Amount of Food Fed (g)</label>
-          <input type="number" class="form-control" id="amountOfFoodFed" name="amountOfFoodFed" placeholder="Enter food amount">
+          <label for="amountOfFoodFed">Amount of Food Fed (oz)</label>
+          <input type="number" class="form-control" id="amountOfFoodFed" name="amountOfFoodFed" placeholder="Enter food amount" value="<%=data.amountOfFoodFed%>">
         </div>
         <div class="form-group col-4">
-          <label for="leftoverFood">Amount of Food Leftover (g)</label>
-          <input type="number" class="form-control" id="leftoverFood" name="leftoverFood" placeholder="Enter leftover food">
+          <label for="leftoverFood">Amount of Food Leftover (oz)</label>
+          <input type="number" class="form-control" id="leftoverFood" name="leftoverFood" placeholder="Enter leftover food" value="<%=data.leftoverFood%>">
         </div>
         <div class="form-group col-4">
           <label for="weatherConditions">Weather Conditions</label>
           <select class="form-control" name="weatherConditions">
-              <option></option>
+              <option><%=data.weatherConditions%></option>
               <option>Sunny - Cold</option> 
               <option>Cloudy - Cold</option>
               <option>Precipitation - Cold</option>
@@ -84,12 +85,12 @@
         </div>
         <div class="form-group col-7">
           <label for="comments">Comments</label>
-          <textarea style="height: 200px;" class="form-control" id="comments" name="comments"></textarea>
+          <textarea style="height: 200px;" class="form-control" id="comments" name="comments" value="<%=data.comments%>"></textarea>
         </div>
-        <button type="submit" value="Create" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+        <button type="submit" value="Update" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
         <div style="margin: 400px;">
       </form>
-      
+     
     </div>
     <% include ../partials/scripts %>
   </body>

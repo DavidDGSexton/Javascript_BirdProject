@@ -38,7 +38,7 @@
             <tr>
                 <td><%= data[i].animalNickname %> (<%= data[i].animalSpecies %>)</td>
                 <td><%= data[i].medicine %></td>
-                <td><%= data[i].dateTime.toLocaleDateString("en-US") %></td>
+                <td><%= data[i].dateTime%></td>
                 <td><%= data[i].goalWeightOfAnimal %>g</td>
                 <td><%= data[i].actualWeightOfAnimal %>g</td>
                 <td><%= data[i].food %></td>
@@ -47,7 +47,7 @@
                 <td><%= data[i].keeperName %></td>
                 <td><%= data[i].weatherConditions %></td>
                 <td><%= data[i].comments %></td>
-                <td><a href="/feedings/delete-feeding?id=<%=data[i]._id%>">Delete</a></td>
+                <td><a href="/feedings/update-feeding?id=<%=data[i]._id%>">Update</a> | <a href="/feedings/delete-feeding?id=<%=data[i]._id%>">Delete </a></td> <!--need to find out how to use this with the reactive table to be different buttons-->
             </tr>
         <% } %>
     </table>
