@@ -2,6 +2,7 @@ const Feeding = require('../models/feeding');
 const Animal = require('../models/animal');
 const Food = require('../models/food');
 const Medicine = require('../models/medicine');
+const excel = require('exceljs');
 
 exports.get_new_feeding_form = async function (req, res) {
    // res.render("asda")  //this is here to test 500 error
@@ -12,6 +13,50 @@ exports.get_new_feeding_form = async function (req, res) {
 
     res.render('feedings/new-feeding-form', {animals: animals, foods: foods, medicines: medicines})
 }
+
+exports.get_export = async function(req, res) {
+
+    const feedings = await Feeding.find({dateTime: {
+        $gte: new Date(new Date(req.query.initalDate).setHours(00, 00, 00)),
+        $lte: new Date(new Date(req.query.endDate).setHours(23, 59, 59)),
+    },
+}).sort({dateTime: 'desc'});
+
+   const workbook = new excel.Workbook();
+   const worksheet = workbook.addWorksheet('Feedings');
+
+   worksheet.columns = [
+    {header: 'Date', key: 'dateTime', width: 15},
+    {header: 'Species', key: 'animalSpecies', width: 20},
+    {header: 'Nickname', key: 'animalNickname', width: 20},
+    {header: 'Food', key: 'food', width: 16},
+    {header: 'Medicine', key: 'medicine', width: 20},
+    {header: 'Goal Weight (g)', key: 'goalWeightOfAnimal', width: 18},
+    {header: 'Actual Weight (g)', key: 'actualWeightOfAnimal', width: 18},
+    {header: 'Amount Fed (g)', key: 'amountOfFoodFed', width: 17},
+    {header: 'Leftover Food (g)', key: 'leftoverFood', width: 18},
+    {header: 'Weather Conditions', key: 'weatherConditions', width: 20},
+    {header: 'Comments', key: 'comments', width: 50},
+  ];
+
+  //set worksheet data
+  worksheet.addRows(feedings);
+
+  //generate response
+  res.setHeader(
+      'Content-Type',
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    );
+    res.setHeader(
+      'Content-Disposition',
+      'attachment; filename=' + 'feedings.xlsx',
+    );
+    return workbook.xlsx.write(res).then(function() {
+      res.status(200).end();
+      
+    });
+    
+};
 
 exports.post_create_feeding = async function (req, res) {
     console.log(req.body);
@@ -32,7 +77,7 @@ exports.post_create_feeding = async function (req, res) {
         comments: req.body.comments,
         weatherConditions: req.body.weatherConditions,
         dateTime: req.body.dateTime,
-        keeperName: res.locals.user.firstName + ' ' + res.locals.user.lastName,
+        keeperName: res.locals.user.firstName + ' ' + res.locals.user.lastName
     });
 
     newFeeding.save(function (err) {
@@ -134,3 +179,48 @@ exports.get_view_feedings = function (req, res) {
         }
     });
 }
+
+    exports.get_export_feedings = function (req, res) {
+        Feeding.find({}, function (err, feedings) {
+            if (err) {
+                // handle error
+            } else {
+                res.render('feedings/export-feedings', { data: feedings });
+            }
+        });
+    }
+
+exports.get_all_export_feedings = async function(req, res) {
+            const feedings = await Feeding.find({}).sort({dateTime: 'desc'});
+          
+            const workbook = new excel.Workbook();
+            const worksheet = workbook.addWorksheet('Feedings');
+
+            worksheet.columns = [
+                {header: 'Date', key: 'dateTime', width: 15},
+                {header: 'Species', key: 'animalSpecies', width: 20},
+                {header: 'Nickname', key: 'animalNickname', width: 20},
+                {header: 'Food', key: 'food', width: 16},
+                {header: 'Medicine', key: 'medicine', width: 20},
+                {header: 'Goal Weight (g)', key: 'goalWeightOfAnimal', width: 18},
+                {header: 'Actual Weight (g)', key: 'actualWeightOfAnimal', width: 18},
+                {header: 'Amount Fed (g)', key: 'amountOfFoodFed', width: 17},
+                {header: 'Leftover Food (g)', key: 'leftoverFood', width: 18},
+                {header: 'Weather Conditions', key: 'weatherConditions', width: 20},
+                {header: 'Comments', key: 'comments', width: 50},
+              ];
+          
+            worksheet.addRows(feedings);
+          
+            res.setHeader(
+                'Content-Type',
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            );
+            res.setHeader(
+                'Content-Disposition',
+                'attachment; filename=' + 'feedings.xlsx',
+            );
+            return workbook.xlsx.write(res).then(function() {
+              res.status(200).end();
+            });
+          };

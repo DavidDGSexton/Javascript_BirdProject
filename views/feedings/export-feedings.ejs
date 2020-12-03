@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../partials/header', {title: 'Export Feedings'}); %>
+  <body>
+    <% include ../partials/navbar %>
+
+    <div class="container">
+      <h1>Export Feedings!</h1>
+      <form
+        method="GET"
+        action="/feedings/export-feedings/export"
+        enctype="text/html"
+      >
+        <div class="form-group col-4">
+          <label for="medicineName">Initial Date</label>
+          <input
+            type="date"
+            class="form-control"
+            id="initalDate"
+            name="initalDate"
+          />
+        </div>
+        <div class="form-group col-4">
+          <label for="medicineName">End Date</label>
+          <input type="date" class="form-control" id="endDate" name="endDate" />
+        </div>
+        <button
+          onclick="window.location.href='/feedings/export-feedings/export';"
+          style="margin-top: 15px; margin-bottom: 30px"
+          class="btn btn-primary"
+        >
+          Export Feedings
+        </button>
+      </form>
+    </div>
+    <% include ../partials/scripts %>
+  </body>
+</html>

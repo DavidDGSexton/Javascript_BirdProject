@@ -9,6 +9,14 @@
       <button onclick="window.location.href='/feedings/new-feeding-form';" style="margin-top: 15px; margin-bottom: 30px;" class="btn btn-primary">
         New Feeding
       </button>
+      <div>
+      <button onclick="window.location.href='/feedings/export-feedings';" style="margin-top: 15px; margin-bottom: 30px;" class="btn btn-primary">
+        Export Specific Feedings
+      </button>
+      <button onclick="window.location.href='/feedings/export';" style="margin-top: 15px; margin-bottom: 30px;" class="btn btn-primary">
+        Export All Feedings
+      </button>
+    </div>
       <table class="table table-bordered table-striped table-responsive" id="feedingTable">
         <thead>
             <tr>      
@@ -52,7 +60,7 @@
       $(document).ready( function () {
           $('#feedingTable').DataTable({  
               responsive: true,
-              order: [[ 2,  "desc"]] 
+              order: [[2, "desc"]]
           });
       });
      </script>

@@ -3,11 +3,13 @@
   <%- include('../partials/header', {title: 'Animal Project'}); %>
   <body>
     <div class="container">
-      <link rel="stylesheet" href="/styles/login-styles.css">
-      <link rel="stylesheet" href="/styles/my-colors.css">
-        <div class="card center" >
-        <h1 style="text-align: center;">Login</h1>
+      <link rel="stylesheet" href="/styles/login-styles.css" />
+      <link rel="stylesheet" href="/styles/my-colors.css" />
 
+      <div class="card center">
+        <img src="/images/logo.png" alt="NatureReachLogo" />
+        <hr />
+        <h1 style="text-align: center">Login</h1>
         <!-- show any messages that come back with authentication -->
         <% if (message.length > 0) { %>
         <div class="alert alert-danger"><%= message %></div>
@@ -36,7 +38,13 @@
               placeholder="password"
             />
           </div>
-          <button type="submit" class="btn btn-primary btn-lg" style="float: right;">Login</button>
+          <button
+            type="submit"
+            class="btn btn-primary btn-lg"
+            style="float: right"
+          >
+            Login
+          </button>
         </form>
 
         <hr />
