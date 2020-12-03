@@ -1,0 +1,18 @@
+<!--This is the 404 not found page, routed to from the bottom of the app.js page-->
+<!DOCTYPE html>
+<html>
+  <%- include('./partials/header', {title: 'Animal Project'}); %>
+  <body>
+    <% include ./partials/navbar %>
+    <div class="container">
+        <h1 style="font-size:100px;text-align:center">404</h1>  
+        <h2 style="font-size:50px;text-align:center">Page Not Found :(</h2>  
+        <br>
+        <br>
+        <br>
+        <h1>Sorry.</h1>
+        <h3>We're having trouble finding this page for you. Click <a href="/">here</a> to go to the homepage.</h3>
+    </div>
+  </body>
+  <% include ./partials/scripts %>
+</html>
