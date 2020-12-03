@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
 <html>
-  <%- include('../partials/header', {title: 'Animal Project'}); %>
+  <%- include('../partials/header', {title: 'feeding Project'}); %>
   <body>
     <% include ../partials/navbar %>
 
     <div class="container">
-      <h1>New Feeding</h1>
+      <h1>New feeding!</h1>
+     
       <form method="POST" action="./create-feeding" enctype="text/html">
-
         <div class="form-group col-4">
           <label for="animalId">Animal</label>
           <select required class="form-control" name="animalId">
@@ -20,12 +20,10 @@
             <% } %>
         </select>
         </div>
-
         <div class="form-group col-4">
           <label for="date">Date</label>
           <input type="date" class="form-control" id="date" placeholder="Enter date" name="date">
         </div>
-
         <div class="form-group col-4">
           <label for="medicineId">Medicine</label>
           <select required class="form-control" name="medicineId">
@@ -37,7 +35,6 @@
             <% } %>
         </select>
         </div>
-        
         <div class="form-group col-4">
           <label for="goalWeight">Goal Weight (g)</label>
           <input type="text" class="form-control" id="goalWeight" name="goalWeight" placeholder="Enter goal weight">
@@ -46,7 +43,6 @@
           <label for="actualWeight">Actual Weight (g)</label>
           <input type="number" class="form-control" id="actualWeight" name="actualWeight" placeholder="Enter actual weight">
         </div>
-
         <div class="form-group col-4">
           <label for="foodId">Food</label>
           <select required class="form-control" name="foodId">
@@ -58,7 +54,6 @@
             <% } %>
         </select>
         </div>
-
         <div class="form-group col-4">
           <label for="amountOfFoodFed">Amount of Food Fed (g)</label>
           <input type="number" class="form-control" id="amountOfFoodFed" name="amountOfFoodFed" placeholder="Enter food amount">
@@ -71,7 +66,7 @@
           <label for="weatherConditions">Weather Conditions</label>
           <select class="form-control" name="weatherConditions">
               <option></option>
-              <option>Sunny - Cold</option> 
+              <option>Sunny - Cold</option>
               <option>Cloudy - Cold</option>
               <option>Precipitation - Cold</option>
               <option>Sunny - Mild</option>

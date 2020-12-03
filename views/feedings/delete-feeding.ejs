@@ -1,4 +1,3 @@
-<!--This is a confirmation page for deletion-->
 <!DOCTYPE html>
 <html>
   <%- include('../partials/header', {title: 'Delete Food'}); %>
@@ -11,7 +10,7 @@
       <p>Name: <%=data.animalNickname%></p>
       <p>Food: <%=data.food%></p>
       <p>Medicine: <%=data.medicine%></p>
-      <p>Date: <%=data.dateTime%></p>
+      <p>Date: <%=data.dateTime.toLocaleDateString("en-US")%></p>
       <form method="POST" action="./delete-feeding" enctype="text/html">
         <input type="hidden" name="id" value="<%=data._id%>" />
         <button class="btn btn-primary">Delete</button>
