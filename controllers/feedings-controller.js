@@ -4,7 +4,7 @@ const Food = require('../models/food');
 const Medicine = require('../models/medicine');
 
 exports.get_new_feeding_form = async function (req, res) {
-    res.render("asda")  //this is here to test 500 error
+   // res.render("asda")  //this is here to test 500 error
 
     const animals = await Animal.find({enabled: true});
     const foods = await Food.find({});
