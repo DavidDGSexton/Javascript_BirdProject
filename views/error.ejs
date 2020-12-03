@@ -1,4 +1,22 @@
 <!--This is the error page, express should be automatically routing this-->
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+
+
+
+<!--This will be the main animals view that show an overview of the existing animals database--> 
+
+<!DOCTYPE html>
+<html>
+  <%- include('./partials/header', {title: 'Animal Project'}); %>
+  <body>
+    <% include ./partials/navbar %>
+    <div class="container">
+<!--    <h1><%= message %></h1> note: this is commented out as to not expose server directory paths to user, enable for error details-->
+        <h1 style="font-size:200px;text-align:center"><%= error.status %></h1>  
+        <br>
+        <h1>Sorry.</h1>
+        <h3>It looks like this page is broken or doesn't exist. If you continue to encounter this error, please report this issue to your system administrator.</h3>
+<!--    <pre><%= error.stack %></pre>  note: this is commented out as to not expose server directory paths to user, enable for error details--> 
+    </div>
+  </body>
+  <% include ./partials/scripts %>
+</html>
