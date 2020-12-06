@@ -15,8 +15,8 @@ exports.get_new_feeding_form = async function (req, res) {
 exports.get_export = async function(req, res) {
 
     const feedings = await Feeding.find({dateTime: {
-        $gte: new Date(new Date(req.query.initalDate).setHours(00, 00, 00)),
-        $lte: new Date(new Date(req.query.endDate).setHours(23, 59, 59)),
+        $gte: new Date(new Date(req.query.initalDate).setUTCHours(00, 00, 00)),
+        $lte: new Date(new Date(req.query.endDate).setUTCHours(23, 59, 59)),
     },
 }).sort({dateTime: 'desc'});
 
