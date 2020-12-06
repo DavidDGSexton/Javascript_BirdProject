@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <%- include('../partials/header', {title: 'Medicine Project'}); %>
+  <%- include('../partials/header', {title: 'View Medications - Nature Reach'}); %>
   <body>
     <% include ../partials/navbar %>
 
@@ -20,8 +20,12 @@
           <% for(var i=0; i<data.length; i++) { %>
             <tr>
                 <td><%= data[i].name %></td>
+                <% if (locals.user.role === "admin") { %>
                 <td><a href="/medicines/update-medicine?id=<%=data[i]._id%>">Update</a> 
                     | <a href="/medicines/delete-medicine?id=<%=data[i]._id%>">Delete</a></td>
+                    <%} else { %>
+                      <td>Must be an Admin to edit medications</td> 
+                        <% } %>
             </tr>
         <% } %>
         </tbody>

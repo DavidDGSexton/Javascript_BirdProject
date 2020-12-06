@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <%- include('../partials/header', {title: 'Feedings'}); %>
+  <%- include('../partials/header', {title: 'View Feedings - Nature Reach'}); %>
   <body>
     <% include ../partials/navbar %>
 
@@ -47,7 +47,7 @@
                 <td><%= data[i].keeperName %></td>
                 <td><%= data[i].weatherConditions %></td>
                 <td><%= data[i].comments %></td>
-                <td><a href="/feedings/delete-feeding?id=<%=data[i]._id%>">Delete</a></td>
+                <td><a href="/feedings/update-feeding?id=<%=data[i]._id%>">Update</a> | <a href="/feedings/delete-feeding?id=<%=data[i]._id%>">Delete</a></td>
             </tr>
         <% } %>
     </table>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <%- include('../partials/header', {title: 'medicine Project'}); %>
+  <%- include('../partials/header', {title: 'Create Medicine - Nature Reach'});
+  %>
   <body>
     <% include ../partials/navbar %>
 
@@ -11,7 +12,7 @@
         action="/medicines/create-medicine"
         enctype="text/html"
       >
-        <div class="form-group col-4">
+        <div class="form-group col-md-4 col-sm-12">
           <label for="medicineName">Name</label>
           <input
             type="text"

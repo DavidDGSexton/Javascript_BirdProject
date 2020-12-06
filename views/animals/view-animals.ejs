@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <%- include('../partials/header', {title: 'Animal Project'}); %>
+  <%- include('../partials/header', {title: 'View Animals - Nature Reach'}); %>
   <body>
     <% include ../partials/navbar %>
 
@@ -24,8 +24,12 @@
                 <td><%= data[i].nickname %></td>
                 <td><%= data[i].species %></td>
                 <td><%= data[i].enabled %></td>
+                <% if (locals.user.role === "admin") { %>
                 <td><a href="/animals/update-animal?id=<%=data[i]._id%>">Update</a> 
                     | <a href="/animals/delete-animal?id=<%=data[i]._id%>">Delete</a></td>
+                    <%} else { %>
+                      <td>Must be an Admin to edit animals</td> 
+                        <% } %>
             </tr>
         <% } %>
         </tbody>
