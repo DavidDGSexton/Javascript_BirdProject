@@ -20,8 +20,12 @@
           <% for(var i=0; i<data.length; i++) { %>
             <tr>
                 <td><%= data[i].name %></td>
+                <% if (locals.user.role === "admin") { %>
                 <td><a href="/foods/update-food?id=<%=data[i]._id%>">Update</a> 
                     | <a href="/foods/delete-food?id=<%=data[i]._id%>">Delete</a></td>
+                    <%} else { %>
+                      <td>Must be an Admin to edit foods</td> 
+                        <% } %>
             </tr>
         <% } %>
         </tbody>
