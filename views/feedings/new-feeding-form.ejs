@@ -9,7 +9,8 @@
       <h1>New feeding!</h1>
      
       <form method="POST" action="./create-feeding" enctype="text/html">
-        <div class="form-group col-4">
+        
+        <div class="form-group col-md-4 col-sm-12">
           
           <label for="animalId">Animal</label>
           <select required class="form-control" name="animalId">
@@ -21,11 +22,12 @@
             <% } %>
         </select>
         </div>
-        <div class="form-group col-4">
+        
+        <div class="form-group col-md-4 col-sm-12">
           <label for="date">Date</label>
           <input type="date" class="form-control" id="date" placeholder="Enter date" name="date">
         </div>
-        <div class="form-group col-4">
+        <div class="form-group col-md-4 col-sm-12">
           <label for="medicineId">Medicine</label>
           <select required class="form-control" name="medicine">
             <option></option>
@@ -36,15 +38,15 @@
             <% } %>
         </select>
         </div>
-        <div class="form-group col-4">
+        <div class="form-group col-md-4 col-sm-12">
           <label for="goalWeight">Goal Weight (g)</label>
           <input type="text" class="form-control" id="goalWeight" name="goalWeight" placeholder="Enter goal weight">
         </div>
-        <div class="form-group col-4">
+        <div class="form-group col-md-4 col-sm-12">
           <label for="actualWeight">Actual Weight (g)</label>
           <input type="number" class="form-control" id="actualWeight" name="actualWeight" placeholder="Enter actual weight">
         </div>
-        <div class="form-group col-4">
+        <div class="form-group col-md-4 col-sm-12">
           <label for="foodId">Food</label>
           <select required class="form-control" name="food">
             <option></option>
@@ -55,15 +57,15 @@
             <% } %>
         </select>
         </div>
-        <div class="form-group col-4">
+        <div class="form-group col-md-4 col-sm-12">
           <label for="amountOfFoodFed">Amount of Food Fed (g)</label>
           <input type="number" class="form-control" id="amountOfFoodFed" name="amountOfFoodFed" placeholder="Enter food amount">
         </div>
-        <div class="form-group col-4">
+        <div class="form-group col-md-4 col-sm-12">
           <label for="leftoverFood">Amount of Food Leftover (g)</label>
           <input type="number" class="form-control" id="leftoverFood" name="leftoverFood" placeholder="Enter leftover food">
         </div>
-        <div class="form-group col-4">
+        <div class="form-group col-md-4 col-sm-12">
           <label for="weatherConditions">Weather Conditions</label>
           <select class="form-control" name="weatherConditions">
               <option></option>
@@ -78,7 +80,7 @@
               <option>Precipitation - Hot</option>
           </select>
         </div>
-        <div class="form-group col-7">
+        <div class="form-group col-md-7 col-sm-12">
           <label for="comments">Comments</label>
           <textarea style="height: 200px;" class="form-control" id="comments" name="comments"></textarea>
         </div>
