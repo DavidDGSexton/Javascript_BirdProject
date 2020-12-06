@@ -52,8 +52,8 @@ exports.get_export = async function(req, res) {
     return workbook.xlsx.write(res).then(function() {
       res.status(200).end();
       
+      
     });
-    
 };
 
 exports.post_create_feeding = async function (req, res) {
