@@ -1,7 +1,7 @@
 <!--This will be the form that the user will use to add a new food to the database-->
 <!DOCTYPE html>
 <html>
-  <%- include('../partials/header', {title: 'food Project'}); %>
+  <%- include('../partials/header', {title: 'Create Food - Nature Reach'}); %>
   <body>
     <% include ../partials/navbar %>
 
@@ -11,9 +11,22 @@
       <form method="POST" action="./create-food" enctype="text/html">
         <div class="form-group col-4">
           <label for="foodName">Name</label>
-          <input type="text" class="form-control" id="foodName" name="name" placeholder="Enter name">
+          <input
+            type="text"
+            class="form-control"
+            id="foodName"
+            name="name"
+            placeholder="Enter name"
+          />
         </div>
-        <button type="submit" value="Create" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+        <button
+          type="submit"
+          value="Create"
+          class="btn btn-primary"
+          style="margin-top: 10px"
+        >
+          Submit
+        </button>
       </form>
       <!--End Boostrap Form-->
     </div>

@@ -1,8 +1,8 @@
-<!--This is a confirmation page for deletion--> 
+<!--This is a confirmation page for deletion-->
 
 <!DOCTYPE html>
 <html>
-  <%- include('../partials/header', {title: 'Delete Food'}); %>
+  <%- include('../partials/header', {title: 'Delete Food - Nature Reach'}); %>
   <body>
     <% include ../partials/navbar %>
 
@@ -12,9 +12,7 @@
       <p>Name: <%=data.name%></p>
       <form method="POST" action="./delete-food" enctype="text/html">
         <input type="hidden" name="id" value="<%=data._id%>" />
-      <button class="btn btn-primary">
-        Delete
-      </button>
+        <button class="btn btn-primary">Delete</button>
       </form>
     </div>
     <% include ../partials/scripts %>
