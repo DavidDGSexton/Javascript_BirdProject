@@ -16,6 +16,7 @@
       <table class="table table-striped" id="animalTable">
         <thead>
           <tr>
+            <th scope="col">Image</th>
             <th scope="col">Email</th>
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
@@ -26,12 +27,26 @@
         <tbody>
           <% for(var i=0; i<data.length; i++) { %>
             <tr>
+                <td>
+                  <% if (data[i].profileImage.data == "") {%>
+                    <img style="width:150px;height:150px;" src="/images/user.png">
+                    </>
+                    <% } else { %>
+                   
+                        <img style="width:150px;height:150px;" src="data:image/<%= data[i].profileImage.contentType%>;base64,
+                        <%= data[i].profileImage.data.toString('base64')%>">
+                      
+               
+                    <% } %>
+                  
+                </td>
                 <td><%= data[i].email %></td>
                 <td><%= data[i].firstName %></td>
                 <td><%= data[i].lastName %></td>
                 <td><%= data[i].role %></td>
                 <td><a href="/users/update-user?id=<%=data[i]._id%>">Update</a> 
-                    | <a href="/users/delete-user?id=<%=data[i]._id%>">Delete</a></td>
+                    | <a href="/users/delete-user?id=<%=data[i]._id%>">Delete</a>
+                    | <a href="/users/update-user-image?id=<%=data[i]._id%>">Profile Image</a></td>
             </tr>
         <% } %>
         </tbody>

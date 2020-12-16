@@ -1,4 +1,7 @@
 const User = require('../models/user');
+var fs = require('fs');
+var path = require('path');
+var multer = require('multer');
 
 exports.get_new_user_form = function (req, res) {
     res.render('users/new-user-form')
@@ -18,6 +21,8 @@ exports.post_create_user = function (req, res) {
   newUser.firstName = req.body.firstName;
   newUser.lastName = req.body.lastName;
   newUser.role = req.body.role;
+  newUser.profileImage.data = "";
+  newUser.profileImage.contentType = "";
 
     newUser.save(function (err) {
         if (err) {
@@ -65,6 +70,42 @@ exports.put_update_user = function (req, res) {
             console.log(err);
         } else {
             res.redirect('./view-users');
+        }
+    });
+};
+
+exports.put_update_user_image = function (req, res) {
+    var obj = {
+        img: {
+            data: fs.readFileSync(path.join('./public/uploads/' + req.file.filename)),
+            contentType: 'image/png'
+        }
+    }
+    
+    console.log(obj.img.data);
+
+    const updateUser = {
+        profileImage: obj.img
+    };
+
+    fs.unlinkSync(path.join('./public/uploads/' + req.file.filename));
+    User.findOneAndUpdate({ _id: req.body.id }, updateUser, function (err, data) {
+        if (err) {
+            // handle error
+            console.log(err);
+        } else {
+            res.redirect('./view-users');
+        }
+    });
+};
+
+exports.get_update_user_image = function (req, res) {
+    User.findOne({ _id: req.query.id }, function (err, user) {
+        if (err) {
+            // handle error
+        } else {
+            console.log(user);
+            res.render('users/add-profile-picture', { data: user });
         }
     });
 };

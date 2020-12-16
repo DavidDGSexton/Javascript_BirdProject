@@ -29,6 +29,11 @@ const userSchema = new mongoose.Schema(
             type: String, 
             required: true
         },
+        profileImage: {
+            data: Buffer,
+            contentType: String,
+            required: false
+        },
     },
     {strict: false},
 );
